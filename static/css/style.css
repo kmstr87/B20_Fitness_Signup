@@ -1,0 +1,104 @@
+.imgcontainer {
+    display: none;
+}
+   
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 25vw;
+    max-height: 15vh;
+    margin: 240px auto;
+    padding: 15px;
+    text-align: center;
+}
+   
+.container:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.7);
+    z-index: -1;
+}
+   
+.nav {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin-top: 50px; /* move the pills to the middle top of the page */
+     position: relative;
+}
+   
+button {
+     background-color: #eee;
+     border: none;
+     border-radius: 10px;
+     color: #555;
+     cursor: pointer;
+     font-size: 16px;
+     padding: 10px 20px;
+     margin: 0 15px;
+     transition: all 0.3s ease;
+}
+   
+button.active {
+     background-color: #007bff;
+     color: #fff;
+}
+   
+nav::before {
+     content: '';
+     position: absolute;
+     top: 50%;
+     left: 0;
+     width: 100%;
+     height: 1px;
+     background-color: #eee;
+     z-index: -1;
+}
+   
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+   
+button[type="submit"], .cancelbtn {
+    background-color: #0abef0;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+   
+button[type="submit"]:hover, .cancelbtn:hover {
+    opacity: 0.8;
+}
+   
+span.psw {
+    float: center;
+    padding-top: 16px;
+}
+   
+label {
+    margin-bottom: 0.5em;
+}
+   
+@media screen and (max-width: 600px) {
+    .container {
+      margin: 50px 10px;
+      max-width: 100%;
+     }
+    .cancelbtn {
+      width: auto;
+      padding: 10px 18px;
+      }
+}
