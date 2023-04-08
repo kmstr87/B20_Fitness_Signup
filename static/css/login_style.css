@@ -7,9 +7,15 @@
     z-index: 1;
     max-width: 25vw;
     max-height: 15vh;
-    margin: 240px auto;
+    margin: 240px auto 450px auto;
     padding: 15px;
     text-align: center;
+}
+
+.pill-container {
+    display: block;
+    text-align: left;
+    margin-bottom: 50px;
 }
    
 .container:before {
@@ -22,14 +28,6 @@
     height: 100%;
     background-color: rgba(255,255,255,0.7);
     z-index: -1;
-}
-   
-.nav {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     margin-top: 50px; /* move the pills to the middle top of the page */
-     position: relative;
 }
    
 button {
@@ -48,18 +46,7 @@ button.active {
      background-color: #007bff;
      color: #fff;
 }
-   
-nav::before {
-     content: '';
-     position: absolute;
-     top: 50%;
-     left: 0;
-     width: 100%;
-     height: 1px;
-     background-color: #eee;
-     z-index: -1;
-}
-   
+  
 input[type="text"], input[type="password"] {
     width: 100%;
     padding: 12px 20px;

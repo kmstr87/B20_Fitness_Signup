@@ -3,7 +3,6 @@ from flask_bcrypt import Bcrypt
 from datetime import timedelta
 import sqlite3
 
-
 app = Flask(__name__)
 """bcrypt = Bcrypt(app)
 app.config['SECRET_KEY'] = 'dkf3sldkjfDF23fLJ3b'
