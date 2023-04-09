@@ -5,9 +5,9 @@ import sqlite3
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
-bcrypt = Bcrypt(app)
 app.config['SECRET_KEY'] = 'dkf3sldkjfDF23fLJ3b'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes = 10)
+
 
 #connect to the SQL Database
 con = sqlite3.connect("database.db")
@@ -23,10 +23,8 @@ sql_query = """
 """
 cur.execute(sql_query)
 
-
 @app.route('/')
 def home():
-        print("home")
         return render_template("home.html")
 
 @app.route('/success/<username>')
@@ -35,7 +33,7 @@ def success(username):
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-        print("hi3")
+
         if (request.method == "GET"):
                 return render_template("login.html")
         else:
