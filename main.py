@@ -29,6 +29,10 @@ def home():
         print("home")
         return render_template("home.html")
 
+@app.route('/success/<username>')
+def success(username):
+    return render_template("user_profile.html", name=username)
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
         print("hi3")
@@ -56,7 +60,7 @@ def login():
                                 flash("Sorry, wrong password")
                                 return render_template("login.html")
                         else:    
-                                return redirect(url_for('home', username=username))
+                                return redirect(url_for('success', username=username))
                         
                 elif "form-register" in request.form:
                         username = request.form['new_uname']
