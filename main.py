@@ -4,18 +4,34 @@ from datetime import timedelta
 import sqlite3
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 """bcrypt = Bcrypt(app)
 app.config['SECRET_KEY'] = 'dkf3sldkjfDF23fLJ3b'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes = 10)"""
 
+#connect to the SQL Database
+con = sqlite3.connect("database.db")
+cur = con.cursor()
+# Creates the User table
+sql_query = """
+    CREATE TABLE IF NOT EXISTS User 
+    (
+        username TEXT PRIMARY KEY, 
+        password TEXT,
+        email TEXT
+    )
+"""
+cur.execute(sql_query)
 
 @app.route('/')
 def home():
         return render_template("home.html")
 
-@app.route('/login')
+@app.route('/login', methods=['POST', 'GET'])
 def login():
-        return render_template("login.html")
+        if (request.method == "GET"):
+                return render_template("login.html")
+
 
 @app.route('/calendar')
 def calendar():

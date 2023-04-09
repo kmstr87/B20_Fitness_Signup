@@ -1,5 +1,6 @@
 const loginSelect = document.querySelector(".pill-login");
 const registerSelect = document.querySelector(".pill-register");
+document.querySelector(".register-content").style.display = "none";
 
 loginSelect.addEventListener("click", () => {
   registerSelect.classList.remove("active");

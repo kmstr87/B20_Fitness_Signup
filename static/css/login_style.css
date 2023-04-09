@@ -30,23 +30,25 @@
     z-index: -1;
 }
    
-button {
-     background-color: #eee;
-     border: none;
-     border-radius: 10px;
-     color: #555;
-     cursor: pointer;
-     font-size: 16px;
-     padding: 10px 20px;
-     margin: 0 15px;
-     transition: all 0.3s ease;
+input {
+    background-color: #eee;
+    border: none;
+    border-radius: 10px;
+    color: #555;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+    display: inline-block
 }
    
 button.active {
      background-color: #007bff;
      color: #fff;
 }
-  
+
+
 input[type="text"], input[type="password"], input[type="email"] {
     width: 100%;
     padding: 12px 20px;
@@ -56,7 +58,7 @@ input[type="text"], input[type="password"], input[type="email"] {
     box-sizing: border-box;
 }
    
-button[type="submit"], .cancelbtn {
+input[type="submit"], .cancelbtn {
     background-color: #0abef0;
     color: white;
     padding: 10px 20px;
@@ -66,7 +68,7 @@ button[type="submit"], .cancelbtn {
     width: 100%;
 }
    
-button[type="submit"]:hover, .cancelbtn:hover {
+input[type="submit"]:hover, .cancelbtn:hover {
     opacity: 0.8;
 }
    
