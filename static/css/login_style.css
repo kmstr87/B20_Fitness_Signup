@@ -1,3 +1,73 @@
+footer {
+    background-color: #5a2894;
+    color: #fff;
+    text-align: center;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+  
+header {
+    background-color: #5a2894;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+}
+  
+.header-buttons a:hover {
+    background-color: #333;
+    color: #fff;
+}
+  
+.header-buttons {
+    position: absolute; 
+    top: 50%;
+    right: 20px; 
+    transform: translateY(-50%);
+    bottom:15%;
+}
+  
+.header-buttons a {
+    display: inline-block;
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+  
+nav {
+    background-color: #a17fc8;
+    padding-top: -20px;
+    padding-bottom:10px;
+    padding-top: 9px;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 20px;
+    font-size: 20px;
+}
+nav a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
 .imgcontainer {
     display: none;
 }
@@ -5,8 +75,8 @@
 body {
     background-image: url("../files/Gym_clear.png");
     background-repeat: no-repeat;
-    background-size: 50% auto;
-    background-position: center top;
+    background-size: 40% auto;
+    background-position: center;
    }
    
 .container {

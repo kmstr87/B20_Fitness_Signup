@@ -12,32 +12,32 @@ section {
     background-image: url('../files/Background.jpg');
     background-size: cover; 
     background-position: center; 
-  }
+}
   
-  header {
+header {
     background-color: #5a2894;
     color: #fff;
     padding: 10px;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     position: relative;
-  }
+}
   
-  .header-buttons a:hover {
+.header-buttons a:hover {
     background-color: #333;
     color: #fff;
-  }
+}
   
 
-  .header-buttons {
+.header-buttons {
     position: absolute; 
     top: 50%;
     right: 20px; 
     transform: translateY(-50%);
     bottom:15%;
-  }
+}
   
-  .header-buttons a {
+.header-buttons a {
     display: inline-block;
     background-color: #fff;
     color: #333;
@@ -46,7 +46,7 @@ section {
     font-size: 20px;
     text-decoration: none;
     border-radius: 5px;
-  }
+}
   
 nav {
     background-color: #a17fc8;

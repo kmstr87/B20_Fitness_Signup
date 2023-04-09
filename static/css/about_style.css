@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -5,16 +9,52 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
 }
-
-nav {
-    background-color: #333;
+  
+header {
+    background-color: #5a2894;
+    color: #fff;
     padding: 10px;
     text-align: center;
+    font-size: 20px;
+    position: relative;
 }
+  
+.header-buttons a:hover {
+    background-color: #333;
+    color: #fff;
+}
+  
+.header-buttons {
+    position: absolute; 
+    top: 50%;
+    right: 20px; 
+    transform: translateY(-50%);
+    bottom:15%;
+}
+  
+.header-buttons a {
+    display: inline-block;
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+  
+nav {
+    background-color: #a17fc8;
+    padding-top: -20px;
+    padding-bottom:10px;
+    padding-top: 9px;
+    text-align: center;
+}
+
 nav a {
     text-decoration: none;
-    color: #ffffff;
-    padding: 10px;
+    color: #333;
+    padding: 20px;
     font-size: 20px;
 }
 nav a:hover {
@@ -22,19 +62,15 @@ nav a:hover {
     color: #fff;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    position:center;
+section {
+    background-image: url('../files/Background.jpg');
+    background-size: cover; 
+    background-position: center; 
 }
 
-h1 {
+h2 {
     margin: 0;
-    margin-left: 1rem;
+    margin-left: 20rem;
     text-decoration: underline;
 }
 
@@ -46,11 +82,6 @@ nav ul {
 
 nav li {
     margin-left: 1rem;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
 }
 
 main {
@@ -70,18 +101,17 @@ section {
 .left-image {
     float: left;
     margin-right: 10rem;
-    margin-left: -40rem;
+    margin-left: -20rem;
 }
 
 .right-image {
     float: right;
     margin-left: 10rem;
-    margin-right: -40rem;
+    margin-right: -20rem;
 }
 
 footer {
-    background-color: #333;
+    background-color: #5a2894;
     color: #fff;
     text-align: center;
-    padding: 1rem;
 }
