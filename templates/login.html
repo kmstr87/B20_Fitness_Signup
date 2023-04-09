@@ -41,8 +41,8 @@
           <a class="nav-link pill-register" href="#">Register</a>
         </li>
       </ul>
-      
-      <form class="login-content" action="action_page.php" method="post">
+
+      <form class="login-content" action="/login" name="login" method="post">
         <label for="uname"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="uname" required />
 
@@ -62,7 +62,21 @@
         <button type="button" class="cancelbtn">Cancel</button>
         <span class="psw"> <a href="#">Forgot password?</a></span>
       </form>
-      <form class="register-content">
+      <form class="register-content" action="post" name="register">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Your Username" name="uname" required />
+
+        <label for="psw"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Your Password"
+          name="psw"
+          required
+        />
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Your Email" name="email" required />
+
+        <button type="submit">Register</button>
       </form>
     </div>
     <script src="../static/js/login.js"></script>
