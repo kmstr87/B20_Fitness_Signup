@@ -16,8 +16,16 @@
     
     <!-- Custom styles for this template -->
     <link href="../static/css/calendar_style.css" rel="stylesheet">
+
+	<script src="../static/js/calendar.js"></script>
 </head>
 <body>
+	<header>
+		<h1>UTSC Fitness Club</h1>
+		<div class="header-buttons">
+			<a href="/login">Login/Register</a>
+		</div>
+	</header>
 	<nav>
 		<a class="active" href="/">Home</a>
 		<a href="/about">About</a>
@@ -27,7 +35,7 @@
  	</nav>
 	<div class="calendar">
 		<div class="header">
-			<h1>Workout Schedule</h1>
+			<h2>Workout Schedule</h2>
 		</div>
 		<table>
 			<thead>
@@ -43,52 +51,56 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
+					<td class="workout">Push-ups</td>
+					<td class="workout">Squats</td>
+					<td class="workout">Lunges</td>
+					<td class="workout">Bicep curls</td>
+					<td class="workout">Tricep dips</td>
 					<td class="rest"></td>
 					<td class="rest"></td>
 				</tr>
 				<tr>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
+					<td class="workout">Pull-ups</td>
+					<td class="workout">Deadlifts</td>
+					<td class="workout">Plank</td>
+					<td class="workout">Shoulder press</td>
+					<td class="workout">Calf raises</td>
 					<td class="rest"></td>
 					<td class="rest"></td>
 				</tr>
 				<tr>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
+					<td class="workout">Leg press</td>
+					<td class="workout">Bench press</td>
+					<td class="workout">Dumbbell flys</td>
+					<td class="workout">Lat pulldowns</td>
+					<td class="workout">Rowing machine</td>
 					<td class="rest"></td>
 					<td class="rest"></td>
 				</tr>
 				<tr>
 					<td class="rest"></td>
 					<td class="rest"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
+					<td class="workout">Sprints</td>
+					<td class="workout">Burpees</td>
+					<td class="workout">Jumping jacks</td>
 					<td class="rest"></td>
 					<td class="rest"></td>
 				</tr>
 				<tr>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
-					<td class="workout"></td>
+					<td class="workout">Dumbbell curls</td>
+					<td class="workout">Tricep extensions</td>
+					<td class="workout">Leg extensions</td>
+					<td class="workout">Hamstring curls</td>
+					<td class="workout">Bent-over rows</td>
 					<td class="rest"></td>
 					<td class="rest"></td>
 				</tr>
-			</tbody>
+			</tbody>			
 		</table>
 	</div>
+	<div id="calendar"></div>
+	<footer>
+		<p>&copy; 2023 UTSC Fitness Club. All rights reserved.</p>
+	</footer>
 </body>
 </html>

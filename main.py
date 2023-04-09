@@ -71,9 +71,32 @@ def macros(username):
                 sex = request.form['sex']
                 age = request.form['age']
                 goal = request.form['fitness']
+                BMR = 0
 
-                # Add the equeation used to calculate the macros below
-                macros = 12345
+                match goal:
+                        case "Gain weight":
+                                goalModifier = 300 
+                        case "Lose weight":
+                                goalModifier = -300 
+                        case _:
+                                goalModifier = 0
+
+                ###### Add the equeation used to calculate the macros below
+                if(sex == 'male'):
+            
+                        BMR = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)
+            
+                        dailyCal = (BMR) + goalModifier
+            
+                else:
+            
+                        BMR = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age)
+            
+                        dailyCal = (BMR) + goalModifier
+                ########
+                #returns dailyCal as a double
+
+                print(1)
                 ########
 
                 try:
