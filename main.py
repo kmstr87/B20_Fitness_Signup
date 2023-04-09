@@ -31,7 +31,19 @@ def home():
 def login():
         if (request.method == "GET"):
                 return render_template("login.html")
-
+        else:
+                if "form-login" in request.form:
+                        username = request.form['uname']
+                        password = request.form['psw']
+                        print(username)
+                        print(password)
+                        return render_template("home.html")
+                elif "form-register" in request.form:
+                        username = request.form['new_uname']
+                        password = request.form['new_psw']
+                        print(username)
+                        print(password)
+                        return render_template("login.html")
 
 @app.route('/calendar')
 def calendar():
