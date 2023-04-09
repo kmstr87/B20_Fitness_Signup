@@ -13,7 +13,7 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes = 10)
 con = sqlite3.connect("database.db")
 cur = con.cursor()
 # Creates the User table
-sql_query = """
+user_query = """
     CREATE TABLE IF NOT EXISTS User 
     (
         username TEXT PRIMARY KEY, 
@@ -21,7 +21,22 @@ sql_query = """
         email TEXT
     )
 """
-cur.execute(sql_query)
+
+# Creates the Data table
+data_query = """
+    CREATE TABLE IF NOT EXISTS Data 
+    (
+        username TEXT PRIMARY KEY,
+        height INTEGER,
+        weight INTEGER,
+        sex TEXT,
+        age INTEGER,
+        goal TEXT,
+        macros INTEGER
+    )
+"""
+cur.execute(user_query)
+cur.execute(data_query)
 
 @app.route('/')
 def home():
@@ -29,7 +44,55 @@ def home():
 
 @app.route('/success/<username>')
 def success(username):
-    return render_template("user_profile.html", name=username)
+        if (request.method == "GET"):
+                #get the cursor (a pointer to the DB)
+                sql_query = "SELECT username FROM DATA WHERE "
+                sql_query += "username = '" + username + "';"
+                #execute the query and commit the results
+                con = sqlite3.connect("database.db")
+                cur = con.cursor()
+                rows = cur.execute(sql_query).fetchall()
+                        
+                if(len(rows) == 0):
+                        flash("No such user: " + username)
+                        return redirect(url_for('macros', username=username))
+                else:
+                        macros = rows[0][6]
+                        # Need a new page which shows the macros only and need to redirect to it
+                        return redirect(url_for('home'))
+
+@app.route('/macros/<username>', methods=['GET', 'POST'])
+def macros(username):
+        if (request.method == "GET"):
+                return render_template("user_profile.html")
+        else:
+                height = request.form['height']
+                weight = request.form['weight']
+                sex = request.form['sex']
+                age = request.form['age']
+                goal = request.form['fitness']
+
+                # Add the equeation used to calculate the macros below
+                macros = 12345
+                ########
+
+                try:
+                        #get the cursor (a pointer to the DB)
+                        sql_query = "INSERT INTO Data VALUES ('"
+                        sql_query += username + "','" + height + "','" + weight
+                        + "','" + sex + "','" + age + "','" + goal + "','" 
+                        + macros + "','" + macros + "')"
+                        #execute the query and commit the results
+                        con = sqlite3.connect("database.db")
+                        cur = con.cursor()
+                        cur.execute(sql_query)
+                        con.commit()
+                        flash("User successfully added")
+                        return redirect(url_for('success', username=username))
+                except sqlite3.IntegrityError:
+                        flash("Username already exists")
+                        return render_template("user_profile.html")
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
