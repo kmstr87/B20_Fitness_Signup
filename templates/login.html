@@ -27,6 +27,9 @@
 
     <!-- Custom styles for this template -->
     <link href="../static/css/login_style.css" rel="stylesheet" />
+    <style>
+      
+    </style>
   </head>
 
   <body>
@@ -56,11 +59,26 @@
           <input type="checkbox" checked="checked" name="remember" /> Remember
           me
         </label>
-        <input type="submit" id="form-login" name="form-login" value="Sign In">
+        <input
+          type="submit"
+          id="form-login"
+          name="form-login"
+          value="Sign In"
+        />
       </form>
-      <form class="register-content" action="/login" name="register" method="post">
+      <form
+        class="register-content"
+        action="/login"
+        name="register"
+        method="post"
+      >
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Your Username" name="new_uname" required />
+        <input
+          type="text"
+          placeholder="Your Username"
+          name="new_uname"
+          required
+        />
 
         <label for="psw"><b>Password</b></label>
         <input
@@ -72,7 +90,12 @@
         <label for="email"><b>Email</b></label>
         <input type="email" placeholder="Your Email" name="email" required />
 
-        <input type="submit" id="form-register"  name="form-register" value="Register">
+        <input
+          type="submit"
+          id="form-register"
+          name="form-register"
+          value="Register"
+        />
       </form>
     </div>
     <script src="../static/js/login.js"></script>

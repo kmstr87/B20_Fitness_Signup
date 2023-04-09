@@ -5,9 +5,9 @@ import sqlite3
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
-"""bcrypt = Bcrypt(app)
+bcrypt = Bcrypt(app)
 app.config['SECRET_KEY'] = 'dkf3sldkjfDF23fLJ3b'
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes = 10)"""
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes = 10)
 
 #connect to the SQL Database
 con = sqlite3.connect("database.db")
@@ -23,27 +23,61 @@ sql_query = """
 """
 cur.execute(sql_query)
 
+
 @app.route('/')
 def home():
+        print("home")
         return render_template("home.html")
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+        print("hi3")
         if (request.method == "GET"):
                 return render_template("login.html")
         else:
                 if "form-login" in request.form:
                         username = request.form['uname']
                         password = request.form['psw']
-                        print(username)
-                        print(password)
-                        return render_template("home.html")
+                        #get the cursor (a pointer to the DB)
+                        sql_query = "SELECT username, password FROM USER WHERE "
+                        sql_query += "username = '" + username + "';"
+                        #execute the query and commit the results
+                        con = sqlite3.connect("database.db")
+                        cur = con.cursor()
+                        rows = cur.execute(sql_query).fetchall()
+                        
+                        if(len(rows) == 0):
+                                flash("No such user: " + username)
+                                return render_template("login.html")
+                        #rows[0] is the row containing the username/password
+                        #so rows[0][1] is the password value
+                        hashedpwd = rows[0][1]
+                        if(not bcrypt.check_password_hash(hashedpwd, password)):
+                                flash("Sorry, wrong password")
+                                return render_template("login.html")
+                        else:    
+                                return redirect(url_for('home', username=username))
+                        
                 elif "form-register" in request.form:
                         username = request.form['new_uname']
                         password = request.form['new_psw']
-                        print(username)
-                        print(password)
-                        return render_template("login.html")
+                        pw_hash = bcrypt.generate_password_hash(password).decode('utf-8')
+                        email = request.form['email']
+                        #print(username + ":" + password)
+                        try:
+                                #get the cursor (a pointer to the DB)
+                                sql_query = "INSERT INTO User VALUES ('"
+                                sql_query += username + "','" + pw_hash + "','" + email + "')"
+                                #execute the query and commit the results
+                                con = sqlite3.connect("database.db")
+                                cur = con.cursor()
+                                cur.execute(sql_query)
+                                con.commit()
+                                flash("User successfully added")
+                                return redirect(url_for('home'))
+                        except sqlite3.IntegrityError:
+                                flash("Username already exists")
+                                return render_template("login.html")
 
 @app.route('/calendar')
 def calendar():

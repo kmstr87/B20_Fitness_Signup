@@ -1,93 +1,103 @@
 .imgcontainer {
-    display: none;
+  display: none;
 }
-   
+
+body {
+  background-image: url("../files/Gym_clear.png");
+  background-repeat: no-repeat;
+  background-size: 50% auto;
+  background-position: center top;
+}
+
 .container {
-    position: relative;
-    z-index: 1;
-    max-width: 25vw;
-    max-height: 15vh;
-    margin: 240px auto 450px auto;
-    padding: 15px;
-    text-align: center;
+  position: relative;
+  z-index: 1;
+  max-width: 25vw;
+  max-height: 15vh;
+  margin: 240px auto 450px auto;
+  padding: 15px;
+  text-align: center;
 }
 
 .pill-container {
-    display: block;
-    text-align: left;
-    margin-bottom: 50px;
+  display: block;
+  text-align: left;
+  margin-bottom: 50px;
 }
-   
+
 .container:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255,255,255,0.7);
-    z-index: -1;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: -1;
 }
-   
+
 input {
-    background-color: #eee;
-    border: none;
-    border-radius: 10px;
-    color: #555;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
-    margin: 0 15px;
-    transition: all 0.3s ease;
-    display: inline-block
+  background-color: #eee;
+  border: none;
+  border-radius: 10px;
+  color: #555;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 0 15px;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
-   
+
 button.active {
-     background-color: #007bff;
-     color: #fff;
+  background-color: #007bff;
+  color: #fff;
 }
 
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
-input[type="text"], input[type="password"], input[type="email"] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+input[type="submit"],
+.cancelbtn {
+  background-color: #0abef0;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
-   
-input[type="submit"], .cancelbtn {
-    background-color: #0abef0;
-    color: white;
-    padding: 10px 20px;
-    margin: 5px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+
+input[type="submit"]:hover,
+.cancelbtn:hover {
+  opacity: 0.8;
 }
-   
-input[type="submit"]:hover, .cancelbtn:hover {
-    opacity: 0.8;
-}
-   
+
 span.psw {
-    float: center;
-    padding-top: 16px;
+  float: center;
+  padding-top: 16px;
 }
-   
+
 label {
-    margin-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
-   
+
 @media screen and (max-width: 600px) {
-    .container {
-      margin: 50px 10px;
-      max-width: 100%;
-     }
-    .cancelbtn {
-      width: auto;
-      padding: 10px 18px;
-      }
+  .container {
+    margin: 50px 10px;
+    max-width: 100%;
+  }
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+  }
 }
