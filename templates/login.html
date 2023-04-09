@@ -27,58 +27,34 @@
 
     <!-- Custom styles for this template -->
     <link href="../static/css/login_style.css" rel="stylesheet" />
-    <style></style>
   </head>
 
-  <body>
-    <!-- Change the action for form -->
-    <div class="container">
-      <ul class="nav nav-pills pill-container">
-        <li class="nav-item">
-          <a class="nav-link pill-login active" href="#">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link pill-register" href="#">Register</a>
-        </li>
-      </ul>
-
-      <form class="login-content" action="/login" name="login" method="post">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required />
-
-        <label for="psw"><b>Password</b></label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          required
-        />
-
-        <label>
-          <input type="checkbox" checked="checked" name="remember" /> Remember
-          me
-        </label>
-        <button type="submit">Sign in</button>
-        <button type="button" class="cancelbtn">Cancel</button>
-        <span class="psw"> <a href="#">Forgot password?</a></span>
-      </form>
-      <form class="register-content" action="post" name="register">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Your Username" name="uname" required />
-
-        <label for="psw"><b>Password</b></label>
-        <input
-          type="password"
-          placeholder="Your Password"
-          name="psw"
-          required
-        />
-        <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Your Email" name="email" required />
-
-        <button type="submit">Register</button>
-      </form>
-    </div>
-    <script src="../static/js/login.js"></script>
-  </body>
+<body>
+  <nav>
+		<a class="active" href="/">Home</a>
+		<a href="/about">About</a>
+		<a href="/calendar">Events</a>
+		<a href="/contacts">Contact</a>
+		<a href="/tutorials">Tutorials</a>
+ 	</nav>
+    <form action="action_page.php" method="post">
+        <div class="container">
+            <div class="pills-nav">
+                <button class="active">Login</button>
+                <button>Register</button>
+            </div>            
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+    
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+    
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+            <button type="submit">Sign in</button>
+            <button type="button" class="cancelbtn">Cancel</button>
+            <span class="psw"> <a href="#">Forgot password?</a></span>
+    </form>
+</body>
 </html>

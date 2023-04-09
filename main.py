@@ -24,5 +24,16 @@ def calendar():
 @app.route('/contacts')
 def contacts():
         return render_template("contacts.html")
+
+"Extra Pages to be added"
+
+@app.route('/tutorials')
+def tutorials():
+        return render_template("tutorials.html")
+
+@app.route('/about')
+def about():
+        return render_template("about.html")
+
         
 app.run(host='0.0.0.0', port=81, debug=True)
