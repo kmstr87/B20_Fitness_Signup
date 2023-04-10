@@ -27,31 +27,29 @@
 
     <!-- Custom styles for this template -->
     <link href="../static/css/login_style.css" rel="stylesheet" />
-    
   </head>
 
   <body>
     <header>
       <h1>UTSC Fitness Club</h1>
       <div class="header-buttons">
-          <a href="/login">Login/Register</a>
+        <a href="/login">Login/Register</a>
       </div>
-      
-      </header>
+    </header>
     <nav>
       <a class="active" href="/">Home</a>
       <a href="/about">About</a>
       <a href="/calendar">Events</a>
       <a href="/contacts">Contact</a>
       <a href="/tutorials">Tutorials</a>
-  </nav>
-    
+    </nav>
+
     <!-- Change the action for form -->
     <div class="container">
       {% with messages = get_flashed_messages() %} {% if messages %} {% for
-        message in messages %}
-        <p>{{ message }}</p>
-        {% endfor %} {% endif %} {% endwith %}
+      message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %} {% endif %} {% endwith %}
       <ul class="nav nav-pills pill-container">
         <li class="nav-item">
           <a class="nav-link pill-login active" href="#">Login</a>
@@ -115,6 +113,6 @@
 
     <footer>
       <p>&copy; 2023 UTSC Fitness Club. All rights reserved.</p>
-  </footer>
+    </footer>
   </body>
 </html>
