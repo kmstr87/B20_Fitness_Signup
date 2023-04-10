@@ -1,0 +1,8 @@
+Members:
+	In Kim		1007757973
+	Leon Lee		1007686121
+	Michelle Guo	1006655219
+
+We decided to create a website for a UTSC Fitness Club. It has a home page, about page which gives a description on the club and their executive members. There is an calendar page which shows the club's events and its workout schedule. Ther is a contacts page where you can find the links to the club's social media as well as a form where you can send a message to. Tutorial page contains videos of various workouts, performed by one of the executives. Finally, there is a login/register page where you can register an account and login if you are an already existing member. When you log in, you can calculate how much calories you will need to intake to reach your fitness goal based on your sex, age, height and weight. The information about the registered users are stored in one of the SQL tables and the contact me messages are stored in another table (we tried to make it send an email to gmail, but couldn't figure out how to allow gmail access less secure apps).
+
+NOTE: Python version of 3.10 or higher will be needed.
