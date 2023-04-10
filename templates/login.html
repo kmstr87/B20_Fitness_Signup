@@ -45,8 +45,13 @@
       <a href="/contacts">Contact</a>
       <a href="/tutorials">Tutorials</a>
   </nav>
+    
     <!-- Change the action for form -->
     <div class="container">
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %} {% endif %} {% endwith %}
       <ul class="nav nav-pills pill-container">
         <li class="nav-item">
           <a class="nav-link pill-login active" href="#">Login</a>
@@ -67,10 +72,6 @@
           name="psw"
           required
         />
-        <label>
-          <input type="checkbox" checked="checked" name="remember" /> Remember
-          me
-        </label>
         <input
           type="submit"
           id="form-login"

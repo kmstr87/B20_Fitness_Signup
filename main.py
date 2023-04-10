@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from flask_bcrypt import Bcrypt
 from datetime import timedelta
 import sqlite3
+import pyautogui as pag
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
@@ -22,49 +23,17 @@ user_query = """
     )
 """
 
-# Creates the Data table
-data_query = """
-    CREATE TABLE IF NOT EXISTS Data 
-    (
-        username TEXT PRIMARY KEY,
-        height INTEGER,
-        weight INTEGER,
-        sex TEXT,
-        age INTEGER,
-        goal TEXT,
-        macros INTEGER
-    )
-"""
 cur.execute(user_query)
-cur.execute(data_query)
 
 @app.route('/')
 def home():
-        return render_template("home.html")
-
-@app.route('/success/<username>')
-def success(username):
-        if (request.method == "GET"):
-                #get the cursor (a pointer to the DB)
-                sql_query = "SELECT username FROM DATA WHERE "
-                sql_query += "username = '" + username + "';"
-                #execute the query and commit the results
-                con = sqlite3.connect("database.db")
-                cur = con.cursor()
-                rows = cur.execute(sql_query).fetchall()
-                        
-                if(len(rows) == 0):
-                        flash("No such user: " + username)
-                        return redirect(url_for('macros', username=username))
-                else:
-                        macros = rows[0][6]
-                        # Need a new page which shows the macros only and need to redirect to it
-                        return redirect(url_for('home'))
+        return render_template("home.html")        
 
 @app.route('/macros/<username>', methods=['GET', 'POST'])
 def macros(username):
         if (request.method == "GET"):
-                return render_template("user_profile.html")
+                flash("")
+                return render_template("user_profile.html", username=username)
         else:
                 height = request.form['height']
                 weight = request.form['weight']
@@ -75,47 +44,26 @@ def macros(username):
 
                 match goal:
                         case "Gain weight":
-                                goalModifier = 300 
+                                goalModifier = 500 
                         case "Lose weight":
-                                goalModifier = -300 
+                                goalModifier = -500 
                         case _:
                                 goalModifier = 0
 
                 ###### Add the equeation used to calculate the macros below
                 if(sex == 'male'):
             
-                        BMR = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)
+                        BMR = 88.362 + (13.397 * float(weight)) + (4.799 * float(height)) - (5.677 * float(age))
             
-                        dailyCal = (BMR) + goalModifier
             
                 else:
             
-                        BMR = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age)
+                        BMR = 447.593 + (9.247 * float(weight)) + (3.098 * float(height)) - (4.330 * float(age))
             
-                        dailyCal = (BMR) + goalModifier
-                ########
-                #returns dailyCal as a double
-
-                print(1)
-                ########
-
-                try:
-                        #get the cursor (a pointer to the DB)
-                        sql_query = "INSERT INTO Data VALUES ('"
-                        sql_query += username + "','" + height + "','" + weight
-                        + "','" + sex + "','" + age + "','" + goal + "','" 
-                        + macros + "','" + macros + "')"
-                        #execute the query and commit the results
-                        con = sqlite3.connect("database.db")
-                        cur = con.cursor()
-                        cur.execute(sql_query)
-                        con.commit()
-                        flash("User successfully added")
-                        return redirect(url_for('success', username=username))
-                except sqlite3.IntegrityError:
-                        flash("Username already exists")
-                        return render_template("user_profile.html")
-
+                dailyCal = round((BMR * 1.5) + goalModifier)    
+                outputMsg = 'You will need ' + str(dailyCal) + ' calories to meet your goal!'
+                flash(outputMsg)
+                return redirect(url_for('macros', username=username))
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -144,7 +92,7 @@ def login():
                                 flash("Sorry, wrong password")
                                 return render_template("login.html")
                         else:    
-                                return redirect(url_for('success', username=username))
+                                return redirect(url_for('macros', username=username))
                         
                 elif "form-register" in request.form:
                         username = request.form['new_uname']
@@ -162,7 +110,7 @@ def login():
                                 cur.execute(sql_query)
                                 con.commit()
                                 flash("User successfully added")
-                                return redirect(url_for('home'))
+                                return render_template("login.html")
                         except sqlite3.IntegrityError:
                                 flash("Username already exists")
                                 return render_template("login.html")
