@@ -8,6 +8,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    font-size: 14pt;
 }
   
 header {
@@ -69,7 +70,14 @@ section {
 }
 
 h2 {
-    margin: 0;
+    font-size: 25pt;
+    margin-top: -10%;
+    margin-left: 20rem;
+    text-decoration: underline;
+}
+
+h3 {
+    font-size: 25pt;
     margin-left: 20rem;
     text-decoration: underline;
 }
@@ -86,7 +94,10 @@ nav li {
 
 main {
     max-width: 800px;
-    margin: 2rem auto;
+    margin: auto auto;
+    padding: 8%;
+    background-color: #C3B1E1;
+    color: #000000;
 }
 
 section {
@@ -95,19 +106,19 @@ section {
 
 .image-wrapper {
     display: flex;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    margin-left: -7%;
+    margin-right: -7%;
 }
 
 .left-image {
     float: left;
-    margin-right: 10rem;
-    margin-left: -20rem;
+    margin-right: 5rem;
 }
 
 .right-image {
     float: right;
-    margin-left: 10rem;
-    margin-right: -20rem;
+    margin-left: 5rem;
 }
 
 footer {
