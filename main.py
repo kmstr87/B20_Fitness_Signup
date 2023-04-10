@@ -2,13 +2,12 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from flask_bcrypt import Bcrypt
 from datetime import timedelta
 import sqlite3
-import pyautogui as pag
+from flask_mail import Mail
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 app.config['SECRET_KEY'] = 'dkf3sldkjfDF23fLJ3b'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes = 10)
-
 
 #connect to the SQL Database
 con = sqlite3.connect("database.db")
@@ -23,7 +22,17 @@ user_query = """
     )
 """
 
+contacts_query = """
+    CREATE TABLE IF NOT EXISTS Contacts
+    (
+        email TEXT PRIMARY KEY, 
+        name TEXT,
+        message TEXT
+    )
+"""
+
 cur.execute(user_query)
+cur.execute(contacts_query)
 
 @app.route('/')
 def home():
@@ -119,9 +128,29 @@ def login():
 def calendar():
         return render_template("calendar.html")
 
-@app.route('/contacts')
+@app.route('/contacts', methods=['GET', 'POST'])
 def contacts():
-        return render_template("contacts.html")
+        if (request.method=='GET'):
+                return render_template("contacts.html")
+        else:
+                email = request.form['email']
+                name = request.form['name']
+                message = request.form['message']
+                try:
+                        #get the cursor (a pointer to the contacts table in DB)
+                        sql_query = "INSERT INTO Contacts VALUES ('"
+                        sql_query += email + "','" + name + "','" + message + "')"
+                        #execute the query and commit the results to db
+                        con = sqlite3.connect("database.db")
+                        cur = con.cursor()
+                        cur.execute(sql_query)
+                        con.commit()
+                        flash("User successfully added!")
+                        return render_template("contacts.html")
+                except sqlite3.IntegrityError:
+                        flash("Username already exists.")
+                        return render_template("contacts.html")
+
 
 "Extra Pages to be added"
 
